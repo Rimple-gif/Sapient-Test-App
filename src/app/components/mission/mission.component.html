@@ -1,0 +1,25 @@
+    <div class="missionsList">
+        <div class="card" *ngFor="let missions of missionData" style="width: 225px;">
+            <img src="{{missions.links.mission_patch}}" class="card-img-top">
+            <div class="card-body">
+
+                <h5 class="card-title" style="color: blue;">{{missions.mission_name}} #{{missions.flight_number}}</h5>
+                <div>
+                    <span class="headerName">Mission Ids:</span> 
+                    <span>{{missions.mission_id}}</span>
+                </div>
+                <div>
+                    <span class="headerName">Launch Year :</span> 
+                    <span>{{missions.launch_year}}</span>
+                </div>
+                <div>
+                    <span class="headerName">Successfull Launch: </span>
+                    <span>{{missions.launch_success}}</span>
+                </div>
+                <div>
+                    <span class="headerName">Successfull Landing: </span>
+                    <span>{{missions.launch_landind}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
