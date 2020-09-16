@@ -1,6 +1,23 @@
-<!-- <p>card-filter works!</p> -->
 <div class="card">
     <h4>Filters</h4>
     <input class="filterInput mr-sm-2" [(ngModel)]="searchword" type="search" placeholder="Launch Year" 
     aria-label="Search" (input)="updateFilter()">
+
+    <div class="row">
+        <span *ngFor="let launchYear of launchYearDataList">
+            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2">{{launchYear}}</button>
+        </span>
+    </div>
+
+    <input class="filterInput mr-sm-2" [(ngModel)]="searchboolean" type="search" placeholder="SuccessFul Launch" 
+    aria-label="Search" (input)="updateFilter()">
+    
+    <div class="row">
+        <span *ngFor="let booleanData of successfullBooleanData">
+            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2">{{booleanData}}</button>
+        </span>
+    </div>
+
+    <!-- <input class="filterInput mr-sm-2" [(ngModel)]="searchword" type="search" placeholder="SuccessFul Landing" 
+    aria-label="Search" (input)="updateFilter()"> -->
 </div>

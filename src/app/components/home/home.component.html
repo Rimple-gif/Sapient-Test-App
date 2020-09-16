@@ -5,10 +5,10 @@
         <p>Space X Launch Program</p>
         <div class="row">
             <div class="col-md-3">
-                <app-card-filter></app-card-filter>
+                <app-card-filter [launchYearDataList]="launchYearDataList" [successfullBooleanData]="successfullBooleanData"></app-card-filter>
             </div>
             <div class="col-md-9">
-                <app-mission></app-mission>
+                <app-mission (missionYearData) ="emitMissionYear($event)" (launchBoolean)="SuccessfullBooleanLaunch($event)"></app-mission>
             </div>
         </div>
         <div style="text-align: center;font-weight: bold;padding: 1%;">Developed By: RIMPLE PAHALAJANI</div>

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Mission } from 'src/app/models/mission';
 
 @Component({
   selector: 'app-card-filter',
@@ -6,6 +7,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./card-filter.component.less']
 })
 export class CardFilterComponent implements OnInit {
+
+  // @Input() missionList: Mission[];
+  @Input() launchYearDataList : String[];
+  @Input() successfullBooleanData : String[];
 
   constructor() { }
 
