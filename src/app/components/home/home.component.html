@@ -5,7 +5,9 @@
         <p>Space X Launch Program</p>
         <div class="row">
             <div class="col-md-3">
-                <app-card-filter [launchYearDataList]="launchYearDataList" [successfullBooleanData]="successfullBooleanData"></app-card-filter>
+                <app-card-filter [launchYearDataList]="launchYearDataList" [successfullBooleanData]="successfullBooleanData" (filteredVal) ="filterApplied($event)" 
+                (filteredLaunch)="filterAppliedforLaunch($event)" (ClearFilter) = "clearAllFilter($event)" 
+                (actionOnYearClick)="actionPerformedOnClick($event)" (actionOnSuccessfullLaunch)="actionOnLaunchClick($event)"></app-card-filter>
             </div>
             <div class="col-md-9">
                 <app-mission (missionYearData) ="emitMissionYear($event)" (launchBoolean)="SuccessfullBooleanLaunch($event)"></app-mission>

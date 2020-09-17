@@ -1,20 +1,26 @@
 <div class="card">
     <h4>Filters</h4>
-    <input class="filterInput mr-sm-2" [(ngModel)]="searchword" type="search" placeholder="Launch Year" 
-    aria-label="Search" (input)="updateFilter()">
+    <span>
+        <input class="filterInput mr-sm-2 col-md-10" [(ngModel)]="filSer" placeholder="{{launchYearOnClick ? launchYearOnClick : 'Launch Year'}}" 
+        aria-label="Search" (keyup)="updateFilter($event)">
+        <span><button class="clearBtn"  (click)="clearFilter()">X</button></span>
+    </span>
 
     <div class="row">
         <span *ngFor="let launchYear of launchYearDataList">
-            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2">{{launchYear}}</button>
+            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2" (click)="onYearClick(launchYear)">{{launchYear}}</button>
         </span>
     </div>
 
-    <input class="filterInput mr-sm-2" [(ngModel)]="searchboolean" type="search" placeholder="SuccessFul Launch" 
-    aria-label="Search" (input)="updateFilter()">
+    <span>
+        <input class="filterInput mr-sm-2 col-md-10" [(ngModel)]="searchboolean" type="search" placeholder="{{launchBooleanOnClick ? launchBooleanOnClick : 'SuccessFul Launch'}}" 
+        aria-label="Search" >
+        <span><button class="clearBtn"  (click)="clearFilter()">X</button></span>
+    </span>
     
     <div class="row">
         <span *ngFor="let booleanData of successfullBooleanData">
-            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2">{{booleanData}}</button>
+            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2" (click)="onSuccessfullLaunch(booleanData)">{{booleanData}}</button>
         </span>
     </div>
 

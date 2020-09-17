@@ -14,6 +14,8 @@ export class MissionComponent implements OnInit {
 
   public missionYear: any = [];
   public SuccessfullLaunch:any = [];
+  public filterVal: any;
+  public duplicateMissionArray:any;
 
   @Output() missionYearData : EventEmitter<String[]> = new EventEmitter<String[]>()
   @Output() launchBoolean : EventEmitter<String[]> = new EventEmitter<String[]>()
@@ -22,19 +24,16 @@ export class MissionComponent implements OnInit {
 
   ngOnInit() {
     this.getAllMission();
-    
   }
 
   //Get all Mission
   getAllMission(){
     this.mservice.getMissionData().then(_.bind((data:any) => {
     this.missionData = data;
-    console.log("dataall-------",data)
+    this.duplicateMissionArray = [...this.missionData]
+    console.log("duplicate----",this.duplicateMissionArray)
     this.getSuccessfullLaunch();
     this.getMissionYear();
-      // if(this.dateFilter){
-      //    this.missionData.filter((e:any) => e.launch_year == this.dateFilter)
-      // }
     },this))
   }
 
@@ -53,5 +52,56 @@ export class MissionComponent implements OnInit {
     console.log("success------",this.SuccessfullLaunch)
     this.launchBoolean.emit(this.SuccessfullLaunch)
   }
+
+  @Input() updateFilter(searchVal: any){
+    
+    this.filterVal = searchVal;
+    // var filteredItems = Object.assign([], this.missionData);
+
+    if(this.filterVal){
+      
+      var temp = this.missionData.filter((e) => e.launch_year.includes(this.filterVal))
+      console.log("launchYear-------",this.missionData,"temp",temp)
+      this.missionData = temp
+      console.log(temp,"finalCheck---------")
+
+    }
+
+  }
+
+  @Input() clearFilter(){
+
+     this.updateFilter('');
+     this.missionData = this.duplicateMissionArray;
+
+  }
+
+  @Input() updateFilterOnYearClick(yearValue:any){
+
+    this.filterVal = yearValue;
+    this.updateFilter(this.filterVal)
+  }
+
+  @Input() updateFilterOnSuccessfullLaunch(booleanValue:any){
+    this.filterVal = booleanValue;
+    if(this.filterVal){
+      var temp = this.missionData.filter((e) => e.launch_success == this.filterVal);
+      this.missionData = temp;
+      console.log("HAHAHHA-------",temp)
+    }
+    
+  }
   
+  @Input() updateFilterForLaunch(launchData:any){
+    this.filterVal = launchData;
+    if(this.filterVal){
+      
+      var temp = this.missionData.filter((e:Mission) => e.launch_success.includes(this.filterVal) !== -1)
+      console.log("chckBooles=====",temp)
+      this.missionData = temp
+      
+      // this.table.offset = 0;
+    }
+
+  }
 }
