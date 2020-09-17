@@ -41,7 +41,7 @@ export class MissionComponent implements OnInit {
     this.missionYear = this.missionData.map((e:Mission) => e.launch_year)
     let missionLaunch = new Set(this.missionYear)
     this.missionYear = Array.from(missionLaunch)
-    console.log("year---------",this.missionYear)
+    // console.log("year---------",this.missionYear)
     this.missionYearData.emit(this.missionYear)
   }
 
@@ -49,7 +49,7 @@ export class MissionComponent implements OnInit {
     this.SuccessfullLaunch = this.missionData.map((e:Mission) => e.launch_success)
     let successfullMissionLaunch = new Set(this.SuccessfullLaunch)
     this.SuccessfullLaunch = Array.from(successfullMissionLaunch)
-    console.log("success------",this.SuccessfullLaunch)
+    // console.log("success------",this.SuccessfullLaunch)
     this.launchBoolean.emit(this.SuccessfullLaunch)
   }
 
@@ -61,9 +61,9 @@ export class MissionComponent implements OnInit {
     if(this.filterVal){
       
       var temp = this.missionData.filter((e) => e.launch_year.includes(this.filterVal))
-      console.log("launchYear-------",this.missionData,"temp",temp)
+      // console.log("launchYear-------",this.missionData,"temp",temp)
       this.missionData = temp
-      console.log(temp,"finalCheck---------")
+      // console.log(temp,"finalCheck---------")
 
     }
 
@@ -87,21 +87,21 @@ export class MissionComponent implements OnInit {
     if(this.filterVal){
       var temp = this.missionData.filter((e) => e.launch_success == this.filterVal);
       this.missionData = temp;
-      console.log("HAHAHHA-------",temp)
+      // console.log("HAHAHHA-------",temp)
     }
     
   }
   
-  @Input() updateFilterForLaunch(launchData:any){
-    this.filterVal = launchData;
-    if(this.filterVal){
+  // @Input() updateFilterForLaunch(launchData:any){
+  //   this.filterVal = launchData;
+  //   if(this.filterVal){
       
-      var temp = this.missionData.filter((e:Mission) => e.launch_success.includes(this.filterVal) !== -1)
-      console.log("chckBooles=====",temp)
-      this.missionData = temp
+  //     var temp = this.missionData.filter((e:Mission) => e.launch_success.includes(this.filterVal) !== -1)
+  //     console.log("chckBooles=====",temp)
+  //     this.missionData = temp
       
-      // this.table.offset = 0;
-    }
+  //     // this.table.offset = 0;
+  //   }
 
-  }
+  // }
 }

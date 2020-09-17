@@ -35,10 +35,10 @@ export class CardFilterComponent implements OnInit {
     this.filteredVal.emit(filterVal)
   }
 
-  updateFilterLaunch(event: {target: {value: {toLowerCase:() => any; }; }; }){
-    let filterLaunch = event.target.value.toLowerCase();
-    this.filteredLaunch.emit(filterLaunch)
-  }
+  // updateFilterLaunch(event: {target: {value: {toLowerCase:() => any; }; }; }){
+  //   let filterLaunch = event.target.value.toLowerCase();
+  //   this.filteredLaunch.emit(filterLaunch)
+  // }
 
   clearFilter(){
     this.filSer = '';

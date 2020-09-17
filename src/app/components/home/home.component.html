@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-3">
                 <app-card-filter [launchYearDataList]="launchYearDataList" [successfullBooleanData]="successfullBooleanData" (filteredVal) ="filterApplied($event)" 
-                (filteredLaunch)="filterAppliedforLaunch($event)" (ClearFilter) = "clearAllFilter($event)" 
+                (ClearFilter) = "clearAllFilter($event)" 
                 (actionOnYearClick)="actionPerformedOnClick($event)" (actionOnSuccessfullLaunch)="actionOnLaunchClick($event)"></app-card-filter>
             </div>
             <div class="col-md-9">

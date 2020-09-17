@@ -23,13 +23,10 @@ export class HomeComponent implements OnInit {
 
   emitMissionYear(data:any){ 
     this.launchYearDataList = data;
-    console.log("data---------",data)
   }
 
   SuccessfullBooleanLaunch(data:any){
     this.successfullBooleanData = data;
-    console.log("succesfullLaunch----------",data)
-
   }
 
   filterApplied(data:any){
@@ -40,9 +37,9 @@ export class HomeComponent implements OnInit {
     this.missionComponent.clearFilter();
   }
 
-  filterAppliedforLaunch(data:any){
-    this.missionComponent.updateFilterForLaunch(data);
-  }
+  // filterAppliedforLaunch(data:any){
+  //   this.missionComponent.updateFilterForLaunch(data);
+  // }
 
   actionPerformedOnClick(data:any){
     this.missionComponent.updateFilterOnYearClick(data);
