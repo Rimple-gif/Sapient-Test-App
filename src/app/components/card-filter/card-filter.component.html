@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card mx-auto" style="width:210px">
     <h4>Filters</h4>
     <span>
-        <input class="filterInput mr-sm-2 col-md-10" [(ngModel)]="filSer" placeholder="{{launchYearOnClick ? launchYearOnClick : 'Launch Year'}}" 
+        <input class="filterInput mr-sm-2 col-md-8" [(ngModel)]="filSer" placeholder="{{launchYearOnClick ? launchYearOnClick : 'Launch Year'}}" 
         aria-label="Search" (keyup)="updateFilter($event)">
         <span><button class="clearBtn"  (click)="clearFilter()">X</button></span>
     </span>
@@ -11,9 +11,10 @@
             <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2" (click)="onYearClick(launchYear)">{{launchYear}}</button>
         </span>
     </div>
+   
 
     <span>
-        <input class="filterInput mr-sm-2 col-md-10" [(ngModel)]="searchboolean" type="search" placeholder="{{launchBooleanOnClick ? launchBooleanOnClick : 'SuccessFul Launch'}}" 
+        <input class="filterInput mr-sm-2 col-md-8" [(ngModel)]="searchboolean" type="search" placeholder="{{launchBooleanOnClick ? launchBooleanOnClick : 'Success Year'}}" 
         aria-label="Search" >
         <span><button class="clearBtn"  (click)="clearFilter()">X</button></span>
     </span>

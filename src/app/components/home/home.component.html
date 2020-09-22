@@ -4,12 +4,12 @@
     <div class="card">
         <p>Space X Launch Program</p>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <app-card-filter [launchYearDataList]="launchYearDataList" [successfullBooleanData]="successfullBooleanData" (filteredVal) ="filterApplied($event)" 
                 (ClearFilter) = "clearAllFilter($event)" 
                 (actionOnYearClick)="actionPerformedOnClick($event)" (actionOnSuccessfullLaunch)="actionOnLaunchClick($event)"></app-card-filter>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <app-mission (missionYearData) ="emitMissionYear($event)" (launchBoolean)="SuccessfullBooleanLaunch($event)"></app-mission>
             </div>
         </div>

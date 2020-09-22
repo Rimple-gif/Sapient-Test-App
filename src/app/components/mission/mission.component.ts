@@ -12,10 +12,12 @@ export class MissionComponent implements OnInit {
 
   public missionData:Mission[];
 
+  public missionCopyData:Mission[];
+
   public missionYear: any = [];
   public SuccessfullLaunch:any = [];
   public filterVal: any;
-  public duplicateMissionArray:any;
+  // public duplicateMissionArray:any;
 
   @Output() missionYearData : EventEmitter<String[]> = new EventEmitter<String[]>()
   @Output() launchBoolean : EventEmitter<String[]> = new EventEmitter<String[]>()
@@ -30,8 +32,9 @@ export class MissionComponent implements OnInit {
   getAllMission(){
     this.mservice.getMissionData().then(_.bind((data:any) => {
     this.missionData = data;
-    this.duplicateMissionArray = [...this.missionData]
-    console.log("duplicate----",this.duplicateMissionArray)
+    this.missionCopyData = this.missionData
+    // this.duplicateMissionArray = [...this.missionData]
+    // console.log("duplicate----",this.duplicateMissionArray)
     this.getSuccessfullLaunch();
     this.getMissionYear();
     },this))
@@ -56,14 +59,11 @@ export class MissionComponent implements OnInit {
   @Input() updateFilter(searchVal: any){
     
     this.filterVal = searchVal;
-    // var filteredItems = Object.assign([], this.missionData);
 
     if(this.filterVal){
       
-      var temp = this.missionData.filter((e) => e.launch_year.includes(this.filterVal))
-      // console.log("launchYear-------",this.missionData,"temp",temp)
-      this.missionData = temp
-      // console.log(temp,"finalCheck---------")
+      this.missionCopyData = this.missionData.filter((e) => e.launch_year.includes(this.filterVal))
+      console.log("launchYear-------",this.filterVal)
 
     }
 
@@ -72,7 +72,7 @@ export class MissionComponent implements OnInit {
   @Input() clearFilter(){
 
      this.updateFilter('');
-     this.missionData = this.duplicateMissionArray;
+     this.missionCopyData = this.missionData;
 
   }
 
@@ -85,9 +85,9 @@ export class MissionComponent implements OnInit {
   @Input() updateFilterOnSuccessfullLaunch(booleanValue:any){
     this.filterVal = booleanValue;
     if(this.filterVal){
-      var temp = this.missionData.filter((e) => e.launch_success == this.filterVal);
-      this.missionData = temp;
-      // console.log("HAHAHHA-------",temp)
+      this.missionCopyData = this.missionData.filter((e) => e.launch_success == this.filterVal);
+      // this.missionData = temp;
+      console.log("filter-------",this.filterVal)
     }
     
   }
