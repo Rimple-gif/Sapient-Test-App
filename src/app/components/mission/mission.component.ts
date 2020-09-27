@@ -13,6 +13,7 @@ export class MissionComponent implements OnInit {
   public missionData:Mission[];
 
   public missionCopyData:Mission[];
+  public missionCopyLaunchData:Mission[];
 
   public missionYear: any = [];
   public SuccessfullLaunch:any = [];
@@ -33,6 +34,7 @@ export class MissionComponent implements OnInit {
     this.mservice.getMissionData().then(_.bind((data:any) => {
     this.missionData = data;
     this.missionCopyData = this.missionData
+    this.missionCopyLaunchData = this.missionCopyData;
     // this.duplicateMissionArray = [...this.missionData]
     // console.log("duplicate----",this.duplicateMissionArray)
     this.getSuccessfullLaunch();
@@ -64,7 +66,7 @@ export class MissionComponent implements OnInit {
       
       this.missionCopyData = this.missionData.filter((e) => e.launch_year.includes(this.filterVal))
       console.log("launchYear-------",this.filterVal)
-
+      //this.missionData = this.missionCopyData
     }
 
   }
@@ -85,9 +87,9 @@ export class MissionComponent implements OnInit {
   @Input() updateFilterOnSuccessfullLaunch(booleanValue:any){
     this.filterVal = booleanValue;
     if(this.filterVal){
-      this.missionCopyData = this.missionData.filter((e) => e.launch_success == this.filterVal);
-      // this.missionData = temp;
-      console.log("filter-------",this.filterVal)
+      this.missionCopyLaunchData = this.missionCopyData.filter((e) => e.launch_success == this.filterVal);
+      console.log("filter-------",this.filterVal,this.missionCopyLaunchData)
+      this.missionCopyData = this.missionCopyLaunchData
     }
     
   }
