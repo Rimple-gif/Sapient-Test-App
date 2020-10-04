@@ -14,14 +14,18 @@ export class MissionComponent implements OnInit {
 
   public missionCopyData:Mission[];
   public missionCopyLaunchData:Mission[];
+  public missionCopy2LaunchData:Mission[];
+  public missionCopyLandingData:Mission[];
 
   public missionYear: any = [];
   public SuccessfullLaunch:any = [];
+  public successfullLanding:any = [];
   public filterVal: any;
   // public duplicateMissionArray:any;
 
   @Output() missionYearData : EventEmitter<String[]> = new EventEmitter<String[]>()
   @Output() launchBoolean : EventEmitter<String[]> = new EventEmitter<String[]>()
+  @Output() landingBoolean : EventEmitter<String[]> = new EventEmitter<String[]>()
 
   constructor( private mservice:MissionService) { }
 
@@ -33,12 +37,14 @@ export class MissionComponent implements OnInit {
   getAllMission(){
     this.mservice.getMissionData().then(_.bind((data:any) => {
     this.missionData = data;
+    console.log("MISSIONDATA------",data)
     this.missionCopyData = this.missionData
     this.missionCopyLaunchData = this.missionCopyData;
-    // this.duplicateMissionArray = [...this.missionData]
-    // console.log("duplicate----",this.duplicateMissionArray)
+    this.missionCopy2LaunchData = this.missionCopyData;
+    this.missionCopyLandingData = this.missionCopyLaunchData;
     this.getSuccessfullLaunch();
     this.getMissionYear();
+    this.getSuccessfullLanding();
     },this))
   }
 
@@ -54,8 +60,16 @@ export class MissionComponent implements OnInit {
     this.SuccessfullLaunch = this.missionData.map((e:Mission) => e.launch_success)
     let successfullMissionLaunch = new Set(this.SuccessfullLaunch)
     this.SuccessfullLaunch = Array.from(successfullMissionLaunch)
-    // console.log("success------",this.SuccessfullLaunch)
+    //console.log("Launchsuccess------",this.SuccessfullLaunch)
     this.launchBoolean.emit(this.SuccessfullLaunch)
+  }
+
+  getSuccessfullLanding(){
+    this.successfullLanding = this.missionData.map((e:Mission) => e.is_tentative)
+    let successfullMissionLanding = new Set(this.successfullLanding)
+    this.successfullLanding = Array.from(successfullMissionLanding)
+    //console.log("LandingSuccess------",this.successfullLanding);
+    this.landingBoolean.emit(this.successfullLanding)
   }
 
   @Input() updateFilter(searchVal: any){
@@ -94,16 +108,15 @@ export class MissionComponent implements OnInit {
     
   }
   
-  // @Input() updateFilterForLaunch(launchData:any){
-  //   this.filterVal = launchData;
-  //   if(this.filterVal){
+  @Input() updateFilterOnSuccessfullLanding(landingData:any){
+    this.filterVal = landingData;
+    if(this.filterVal == false){
       
-  //     var temp = this.missionData.filter((e:Mission) => e.launch_success.includes(this.filterVal) !== -1)
-  //     console.log("chckBooles=====",temp)
-  //     this.missionData = temp
+      this.missionCopyLandingData = this.missionCopyData.filter((e:Mission) => e.is_tentative == false)
+      console.log("chckBooles=====",this.filterVal,this.missionCopyLandingData)
+      this.missionCopyData = this.missionCopyLandingData
       
-  //     // this.table.offset = 0;
-  //   }
+    }
 
-  // }
+  }
 }

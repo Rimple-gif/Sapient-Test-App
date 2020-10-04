@@ -5,10 +5,10 @@ export class Mission{
     public mission_id :any;
     public launch_year:string;
     public launch_success:any;
-    public launch_landing:any;
+    public is_tentative:any;
 
     constructor(mission_patch:any,flight_number:number,mission_name :string,mission_id :any,launch_year:string,
-        launch_success:any,launch_landing:any){
+        launch_success:any,is_tentative:any){
 
             this.mission_patch = mission_patch;
             this.flight_number = flight_number;
@@ -16,6 +16,6 @@ export class Mission{
             this.mission_id = mission_id;
             this.launch_year = launch_year;
             this.launch_success = launch_success;
-            this.launch_landing = launch_landing;
+            this.is_tentative = is_tentative;
     }
 }

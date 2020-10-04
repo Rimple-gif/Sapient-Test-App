@@ -14,15 +14,18 @@ export class CardFilterComponent implements OnInit {
   // @Input() missionList: Mission[];
   @Input() launchYearDataList : String[];
   @Input() successfullBooleanData : String[];
+  @Input() successfullLanding : String[];
 
   @Input() launchYearOnClick :any;
   @Input() launchBooleanOnClick : any;
+  @Input() landingBooleanOnClick : any;
 
   @Output() filteredVal: EventEmitter<String> = new EventEmitter();
   @Output() ClearFilter: EventEmitter<String> = new EventEmitter();
   @Output() filteredLaunch: EventEmitter<any> = new EventEmitter();
   @Output() actionOnYearClick:EventEmitter<any> = new EventEmitter();
   @Output() actionOnSuccessfullLaunch:EventEmitter<any> = new EventEmitter();
+  @Output() actionOnSuccessfullLanding:EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -44,6 +47,7 @@ export class CardFilterComponent implements OnInit {
     this.filSer = '';
     this.launchYearOnClick = '';
     this.launchBooleanOnClick = '';
+    this.landingBooleanOnClick = '';
     this.searchboolean = '';
     this.filteredVal.emit('')
     this.ClearFilter.emit('clearFilter')
@@ -56,5 +60,9 @@ export class CardFilterComponent implements OnInit {
 
   onSuccessfullLaunch(data:any){
     this.actionOnSuccessfullLaunch.emit(data)
+  }
+
+  onSuccessfullLanding(data:any){
+    this.actionOnSuccessfullLanding.emit(data)
   }
 }

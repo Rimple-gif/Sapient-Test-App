@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   public launchYearDataList : string[] = []
   public successfullBooleanData : string[] = []
+  public successfullLanding : string[] = []
 
   @ViewChild(MissionComponent,{ static : false }) missionComponent : any;
   @ViewChild(CardFilterComponent,{ static: false }) cardFilterComponent : any;
@@ -26,7 +27,11 @@ export class HomeComponent implements OnInit {
   }
 
   SuccessfullBooleanLaunch(data:any){
-    this.successfullBooleanData = data;
+    this.cardFilterComponent.successfullBooleanData = data;
+  }
+
+  successfullBooleanLanding(data:any){
+    this.successfullLanding = data;
   }
 
   filterApplied(data:any){
@@ -49,6 +54,11 @@ export class HomeComponent implements OnInit {
   actionOnLaunchClick(data:any){
     this.missionComponent.updateFilterOnSuccessfullLaunch(data);
     this.cardFilterComponent.launchBooleanOnClick = data;
+  }
+
+  actionOnLandingClick(data:any){
+    this.missionComponent.updateFilterOnSuccessfullLanding(data);
+    this.cardFilterComponent.landingBooleanOnClick = data;
   }
 
 }

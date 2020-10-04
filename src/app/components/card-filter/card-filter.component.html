@@ -14,7 +14,7 @@
    
 
     <span>
-        <input class="filterInput mr-sm-2 col-md-8" [(ngModel)]="searchboolean" type="search" placeholder="{{launchBooleanOnClick ? launchBooleanOnClick : 'Success Year'}}" 
+        <input class="filterInput mr-sm-2 col-md-8" [(ngModel)]="searchboolean" type="search" placeholder="{{launchBooleanOnClick ? launchBooleanOnClick : 'Launch Success'}}" 
         aria-label="Search" >
         <span><button class="clearBtn"  (click)="clearFilter()">X</button></span>
     </span>
@@ -25,6 +25,16 @@
         </span>
     </div>
 
-    <!-- <input class="filterInput mr-sm-2" [(ngModel)]="searchword" type="search" placeholder="SuccessFul Landing" 
-    aria-label="Search" (input)="updateFilter()"> -->
+    <span>
+        <input class="filterInput mr-sm-2 col-md-8" [(ngModel)]="searchboolean" type="search" placeholder="{{landingBooleanOnClick == false ? landingBooleanOnClick : 'Landing Success'}}" 
+        aria-label="Search" >
+        <span><button class="clearBtn"  (click)="clearFilter()">X</button></span>
+    </span>
+    
+    <div class="row">
+        <span *ngFor="let successLanding of successfullLanding">
+            <button type="button" class="btn btn-success mr-2 ml-3 mb-2 mt-2" (click)="onSuccessfullLanding(successLanding)">{{successLanding}}</button>
+        </span>
+    </div>
+
 </div>
